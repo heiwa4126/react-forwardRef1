@@ -1,7 +1,7 @@
 import "./App.css";
-import App1 from "./App1";
-import App2 from "./App2";
-import App3 from "./App3";
+import App1 from "./components/App1";
+import App2 from "./components/App2";
+import App3 from "./components/App3";
 
 function App() {
   return (
