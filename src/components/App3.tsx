@@ -35,9 +35,9 @@ function App3() {
     [chart]
   );
 
-  const increment = () => {
+  const increment = useCallback(() => {
     setCount((c) => c + 1);
-  };
+  }, []);
 
   return (
     <>
