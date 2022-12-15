@@ -59,12 +59,15 @@ export const data = {
 
 interface Handler {
   clear(): void;
+  updateData(n: number, a: any): void;
+  getLabels(): unknown[] | undefined;
+  getXLen(): number | undefined;
 }
 
 const LineChart1 = forwardRef<Handler, any>((props, ref) => {
   const chart = useRef<ChartJS>(null!);
   useImperativeHandle(ref, () => {
-    return { clear };
+    return { clear, updateData, getLabels, getXLen };
   });
 
   return <Chart type="line" ref={chart} options={options} data={data} />;
@@ -72,11 +75,27 @@ const LineChart1 = forwardRef<Handler, any>((props, ref) => {
   function clear() {
     chart.current.clear();
   }
+
+  function getLabels(): unknown[] | undefined {
+    return chart.current.data.labels;
+  }
+
+  function getXLen(): number | undefined {
+    return chart.current.data.labels?.length;
+  }
+
+  function updateData(n: number, a: any) {
+    chart.current.data.datasets[n].data = a;
+    chart.current.update();
+  }
 });
 
 function App3() {
   const chart = useRef<Handler>(null!);
   const clearChart = () => chart.current.clear();
+  const getLabels = () => console.log(chart.current.getLabels());
+  const getXLen = () => console.log(chart.current.getXLen());
+
   return (
     <>
       <h1>forwardRef example 3</h1>
@@ -84,6 +103,8 @@ function App3() {
         <LineChart1 ref={chart} />
         <div>
           <button onClick={clearChart}>clear</button>
+          <button onClick={getLabels}>debug: getLabels</button>
+          <button onClick={getXLen}>debug: getXLen</button>
         </div>
       </div>
     </>
