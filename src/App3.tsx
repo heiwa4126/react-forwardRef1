@@ -59,7 +59,7 @@ export const data = {
 
 interface Handler {
   clear(): void;
-  updateData(n: number, a: any): void;
+  updateData(n: number, a: number[]): void;
   getLabels(): unknown[] | undefined;
   getXLen(): number | undefined;
 }
@@ -84,17 +84,36 @@ const LineChart1 = forwardRef<Handler, any>((props, ref) => {
     return chart.current.data.labels?.length;
   }
 
-  function updateData(n: number, a: any) {
+  function updateData(n: number, a: number[]) {
     chart.current.data.datasets[n].data = a;
     chart.current.update();
   }
 });
+
+/**
+ * Returns an iterator that iterates integers in [start, end).
+ */
+function* range(start: number, end: number) {
+  for (let i = start; i < end; i++) {
+    yield i;
+  }
+}
 
 function App3() {
   const chart = useRef<Handler>(null!);
   const clearChart = () => chart.current.clear();
   const getLabels = () => console.log(chart.current.getLabels());
   const getXLen = () => console.log(chart.current.getXLen());
+  function genData(): number[] {
+    const len = chart.current.getXLen();
+    if (!len) {
+      return [];
+    }
+    return [...range(0, len)].map(() => randNumber({ min: -1000, max: 1000 }));
+  }
+  function setData(n: number) {
+    chart.current.updateData(n, genData());
+  }
 
   return (
     <>
@@ -105,6 +124,8 @@ function App3() {
           <button onClick={clearChart}>clear</button>
           <button onClick={getLabels}>debug: getLabels</button>
           <button onClick={getXLen}>debug: getXLen</button>
+          <button onClick={() => setData(0)}>update 0</button>
+          <button onClick={() => setData(1)}>update 1</button>
         </div>
       </div>
     </>
