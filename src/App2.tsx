@@ -1,7 +1,7 @@
 // example from
-//
+// https://qiita.com/sazumy/items/30966cd848ce2f02b440
 
-import React, { useRef, useImperativeHandle, forwardRef } from "react";
+import { useRef, useImperativeHandle, forwardRef } from "react";
 
 // 公開したいメソッドの定義
 interface Handler {

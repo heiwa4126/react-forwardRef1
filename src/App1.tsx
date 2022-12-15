@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 
 function App1() {
   const ref1 = useRef<HTMLInputElement>(null!);
@@ -25,7 +25,7 @@ interface Props {
   refBack: HTMLInputElement;
 }
 
-const InputX = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
+const InputX = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const clearText = () => {
     props.refBack.value = "";
   };
