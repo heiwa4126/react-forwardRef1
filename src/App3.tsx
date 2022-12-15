@@ -1,18 +1,18 @@
-import { useRef, useImperativeHandle, forwardRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
 
-import { Chart } from "react-chartjs-2";
 import { randNumber } from "@ngneat/falso";
+import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -28,7 +28,7 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: "top" as const,
+      position: "bottom" as const,
     },
     title: {
       display: true,
@@ -61,7 +61,7 @@ interface Handler {
   clear(): void;
 }
 
-const LineChart1 = forwardRef<Handler>((props, ref) => {
+const LineChart1 = forwardRef<Handler, any>((props, ref) => {
   const chart = useRef<ChartJS>(null!);
   useImperativeHandle(ref, () => {
     return { clear };
@@ -79,6 +79,7 @@ function App3() {
   const clearChart = () => chart.current.clear();
   return (
     <>
+      <h1>forwardRef example 3</h1>
       <div style={{ width: "32em", height: "14em" }}>
         <LineChart1 ref={chart} />
         <div>
