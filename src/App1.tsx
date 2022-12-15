@@ -13,8 +13,11 @@ function App1() {
         <InputX ref={ref1} refBack={ref1.current}>
           clear
         </InputX>
-        <button onClick={() => onClick1("*1111*")}>test1</button>
-        <button onClick={() => onClick1("*2222*")}>test2</button>
+        <div>
+          <button onClick={() => onClick1("*1111*")}>test1</button>
+          <button onClick={() => onClick1("*2222*")}>test2</button>
+          ** clear button works sometime. **
+        </div>
       </div>
     </>
   );
