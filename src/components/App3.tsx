@@ -9,15 +9,15 @@ function App3() {
   const [count, setCount] = useState(0);
 
   const clearChart = useCallback(() => {
-    return chart.current.clear();
+    chart.current.clear();
   }, [chart]);
 
   const getLabels = useCallback(() => {
-    return console.log(chart.current.getLabels());
+    console.log(chart.current.getLabels());
   }, [chart]);
 
   const getXLen = useCallback(() => {
-    return console.log(chart.current.getXLen());
+    console.log(chart.current.getXLen());
   }, [chart]);
 
   const genData = useCallback((): number[] => {
