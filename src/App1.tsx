@@ -27,7 +27,7 @@ interface Props {
 
 const InputX = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const clearText = () => {
-    props.refBack.value = "";
+    props.refBack.value = ""; // DON'T WORK
   };
   return (
     <div>

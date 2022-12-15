@@ -1,17 +1,12 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 
+import { randNumber } from "@ngneat/falso";
+
 import {
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
+  CategoryScale, Chart as ChartJS, Legend, LinearScale, LineController, LineElement, PointElement, Title,
+  Tooltip
 } from "chart.js";
 
-import { randNumber } from "@ngneat/falso";
 import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
@@ -19,6 +14,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  LineController,
   Title,
   Tooltip,
   Legend
@@ -57,14 +53,14 @@ export const data = {
   ],
 };
 
-interface Handler {
+interface LineChart1Handler {
   clear(): void;
   updateData(n: number, a: number[]): void;
   getLabels(): unknown[] | undefined;
   getXLen(): number | undefined;
 }
 
-const LineChart1 = forwardRef<Handler, any>((props, ref) => {
+const LineChart1 = forwardRef<LineChart1Handler, any>((props, ref) => {
   const chart = useRef<ChartJS>(null!);
   useImperativeHandle(ref, () => {
     return { clear, updateData, getLabels, getXLen };
@@ -100,7 +96,7 @@ function* range(start: number, end: number) {
 }
 
 function App3() {
-  const chart = useRef<Handler>(null!);
+  const chart = useRef<LineChart1Handler>(null!);
   const clearChart = () => chart.current.clear();
   const getLabels = () => console.log(chart.current.getLabels());
   const getXLen = () => console.log(chart.current.getXLen());
