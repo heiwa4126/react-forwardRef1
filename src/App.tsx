@@ -26,13 +26,15 @@ interface FancyButtonProps {
   children: JSX.Element | string;
 }
 
-const FancyButton = React.forwardRef<any, FancyButtonProps>((props, ref) => {
-  return (
-    <div>
-      <input type="text" ref={ref} value={props.value} />
-      <button>{props.children}</button>
-    </div>
-  );
-});
+const FancyButton = React.forwardRef<HTMLInputElement, FancyButtonProps>(
+  (props, ref) => {
+    return (
+      <div>
+        <input type="text" ref={ref} value={props.value} />
+        <button>{props.children}</button>
+      </div>
+    );
+  }
+);
 
 export default App;
