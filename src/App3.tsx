@@ -1,3 +1,5 @@
+import { useRef, useImperativeHandle, forwardRef } from "react";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,7 +11,7 @@ import {
   Legend,
 } from "chart.js";
 
-import { Line } from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 import { randNumber } from "@ngneat/falso";
 
 ChartJS.register(
@@ -55,15 +57,35 @@ export const data = {
   ],
 };
 
-function LineEx1() {
-  return <Line options={options} data={data} />;
+interface Handler {
+  clear(): void;
 }
 
+const LineChart1 = forwardRef<Handler>((props, ref) => {
+  const chart = useRef<ChartJS>(null!);
+  useImperativeHandle(ref, () => {
+    return { clear };
+  });
+
+  return <Chart type="line" ref={chart} options={options} data={data} />;
+
+  function clear() {
+    chart.current.clear();
+  }
+});
+
 function App3() {
+  const chart = useRef<Handler>(null!);
+  const clearChart = () => chart.current.clear();
   return (
-    <div style={{ width: "32em", height: "16em" }}>
-      <LineEx1 />
-    </div>
+    <>
+      <div style={{ width: "32em", height: "14em" }}>
+        <LineChart1 ref={chart} />
+        <div>
+          <button onClick={clearChart}>clear</button>
+        </div>
+      </div>
+    </>
   );
 }
 
