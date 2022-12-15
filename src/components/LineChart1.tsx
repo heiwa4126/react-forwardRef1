@@ -66,13 +66,11 @@ export interface LineChart1Handler {
 
 const LineChart1 = forwardRef<LineChart1Handler, any>((props, ref) => {
   const chart = useRef<ChartJS>(null!);
-  useImperativeHandle(ref, () => {
-    return { clear, updateData, getLabels, getXLen };
-  });
+  useImperativeHandle(ref, () => ({ clear, updateData, getLabels, getXLen }));
 
   return <Chart type="line" ref={chart} options={options} data={data} />;
 
-  function clear() {
+  function clear(): void {
     chart.current.clear();
   }
 
