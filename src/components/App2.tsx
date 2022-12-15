@@ -12,6 +12,7 @@ interface Handler {
 // 公開したいメソッドを持つコンポーネントの定義
 // プロパティを追加する場合は、forwardRef<Handler, Props>と定義する。
 const FancyInput = forwardRef<Handler>((props, ref) => {
+  console.log("FancyInput render");
   const inputRef = useRef({} as HTMLInputElement);
 
   useImperativeHandle(ref, () => {
@@ -29,7 +30,8 @@ const FancyInput = forwardRef<Handler>((props, ref) => {
 });
 
 // コンポーネントの使い方
-const App2 = () => {
+function App2() {
+  console.log("App2 render");
   const ref = useRef({} as Handler);
   return (
     <>
@@ -50,6 +52,6 @@ const App2 = () => {
       </button>
     </>
   );
-};
+}
 
 export default App2;

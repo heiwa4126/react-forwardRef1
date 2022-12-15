@@ -6,6 +6,7 @@ import App3 from "./components/App3";
 const header = "forwardRef example";
 
 function App() {
+  console.log("App render");
   return (
     <>
       <h1>{header} 1</h1>

@@ -1,6 +1,7 @@
 import React, { useRef, forwardRef } from "react";
 
 function App1() {
+  console.log("App1 render");
   const ref1 = useRef<HTMLInputElement>(null!);
   const onClick1 = (msg: string) => {
     ref1.current.value = msg;

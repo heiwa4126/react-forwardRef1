@@ -1,10 +1,44 @@
 import { randNumber } from "@ngneat/falso";
-import { useRef } from "react";
+import { useCallback, useRef, useState, memo } from "react";
 import { range } from "../utils";
 import LineChart1, { LineChart1Handler } from "./LineChart1";
 
 function App3() {
+  console.log("App3 render");
   const chart = useRef<LineChart1Handler>(null!);
+  const [count, setCount] = useState(0);
+
+  const clearChart = useCallback(() => {
+    return chart.current.clear();
+  }, [chart]);
+
+  const getLabels = useCallback(() => {
+    return console.log(chart.current.getLabels());
+  }, [chart]);
+
+  const getXLen = useCallback(() => {
+    return console.log(chart.current.getXLen());
+  }, [chart]);
+
+  const genData = useCallback((): number[] => {
+    const len = chart.current.getXLen();
+    if (!len) {
+      return [];
+    }
+    return [...range(0, len)].map(() => randNumber({ min: -1000, max: 1000 }));
+  }, [chart]);
+
+  const setData = useCallback(
+    (n: number) => {
+      chart.current.updateData(n, genData());
+    },
+    [chart]
+  );
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+
   return (
     <>
       <div style={{ width: "32em", height: "14em" }}>
@@ -15,30 +49,12 @@ function App3() {
           <button onClick={getXLen}>debug: getXLen</button>
           <button onClick={() => setData(0)}>update 0</button>
           <button onClick={() => setData(1)}>update 1</button>
+          Count: {count}
+          <button onClick={increment}>+</button>
         </div>
       </div>
     </>
   );
-
-  function clearChart() {
-    return chart.current.clear();
-  }
-  function getLabels() {
-    return console.log(chart.current.getLabels());
-  }
-  function getXLen() {
-    return console.log(chart.current.getXLen());
-  }
-  function genData(): number[] {
-    const len = chart.current.getXLen();
-    if (!len) {
-      return [];
-    }
-    return [...range(0, len)].map(() => randNumber({ min: -1000, max: 1000 }));
-  }
-  function setData(n: number) {
-    chart.current.updateData(n, genData());
-  }
 }
 
-export default App3;
+export default memo(App3);

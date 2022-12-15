@@ -10,7 +10,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef, memo } from "react";
 import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
@@ -65,6 +65,7 @@ export interface LineChart1Handler {
 }
 
 const LineChart1 = forwardRef<LineChart1Handler, any>((props, ref) => {
+  console.log("LineChart1 render");
   const chart = useRef<ChartJS>(null!);
   useImperativeHandle(ref, () => ({ clear, updateData, getLabels, getXLen }));
 
@@ -88,4 +89,4 @@ const LineChart1 = forwardRef<LineChart1Handler, any>((props, ref) => {
   }
 });
 
-export default LineChart1;
+export default memo(LineChart1);
