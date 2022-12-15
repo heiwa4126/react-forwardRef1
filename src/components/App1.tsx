@@ -8,7 +8,6 @@ function App1() {
 
   return (
     <>
-      <h1>forwardRef example 1</h1>
       <div>
         <InputX ref={ref1} refBack={ref1.current}>
           clear

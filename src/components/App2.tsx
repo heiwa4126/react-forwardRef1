@@ -33,7 +33,6 @@ const App2 = () => {
   const ref = useRef({} as Handler);
   return (
     <>
-      <h1>forwardRef example 2</h1>
       <FancyInput ref={ref} />
       <button
         onClick={() => {

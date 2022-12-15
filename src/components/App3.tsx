@@ -5,23 +5,8 @@ import LineChart1, { LineChart1Handler } from "./LineChart1";
 
 function App3() {
   const chart = useRef<LineChart1Handler>(null!);
-  const clearChart = () => chart.current.clear();
-  const getLabels = () => console.log(chart.current.getLabels());
-  const getXLen = () => console.log(chart.current.getXLen());
-  function genData(): number[] {
-    const len = chart.current.getXLen();
-    if (!len) {
-      return [];
-    }
-    return [...range(0, len)].map(() => randNumber({ min: -1000, max: 1000 }));
-  }
-  function setData(n: number) {
-    chart.current.updateData(n, genData());
-  }
-
   return (
     <>
-      <h1>forwardRef example 3</h1>
       <div style={{ width: "32em", height: "14em" }}>
         <LineChart1 ref={chart} />
         <div>
@@ -34,6 +19,26 @@ function App3() {
       </div>
     </>
   );
+
+  function clearChart() {
+    return chart.current.clear();
+  }
+  function getLabels() {
+    return console.log(chart.current.getLabels());
+  }
+  function getXLen() {
+    return console.log(chart.current.getXLen());
+  }
+  function genData(): number[] {
+    const len = chart.current.getXLen();
+    if (!len) {
+      return [];
+    }
+    return [...range(0, len)].map(() => randNumber({ min: -1000, max: 1000 }));
+  }
+  function setData(n: number) {
+    chart.current.updateData(n, genData());
+  }
 }
 
 export default App3;
