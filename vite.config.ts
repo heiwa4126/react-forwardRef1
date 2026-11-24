@@ -15,21 +15,15 @@ export default defineConfig(() => {
               dropDebugger: true,
             },
           },
-          // manualChunks(id) {
-          //   if (/[\\/]node_modules[\\/](react|react-dom)[\\/]/.test(id)) {
-          //     return "react-vendor";
-          //   }
-          // },
+          manualChunks(id) {
+            if (
+              /[\\/]node_modules[\\/](chart\.js|react-chartjs-2|@ngneat[\\/]falso)[\\/]/.test(id)
+            ) {
+              return "chart-vendor";
+            }
+          },
         },
       },
-      //  rollupOptions: {
-      //     output: {
-      //       manualChunks: {
-      //         a: ["react", "react-dom"],
-      //         b: ["chart.js", "react-chartjs-2", "@ngneat/falso"],
-      //       },
-      //     },
-      //   },
     },
   };
 
