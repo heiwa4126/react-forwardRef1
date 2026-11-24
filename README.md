@@ -4,10 +4,10 @@ React で forwardRef と useImperativeHandle を使うサンプル。
 
 Vite 4 でTypeScript。
 
-
 ## メモ
 
 React の functional components は 無理にarrowで書くより、
+
 - hooks
 - return JSX
 - function()s

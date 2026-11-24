@@ -21,7 +21,7 @@ ChartJS.register(
   LineController,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export const options = {
