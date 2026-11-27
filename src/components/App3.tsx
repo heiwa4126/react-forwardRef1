@@ -1,6 +1,5 @@
-import { randNumber } from "@ngneat/falso";
 import { useRef } from "react";
-import { range } from "../utils";
+import { randomInt, range } from "../utils";
 import LineChart1, { LineChart1Handler } from "./LineChart1";
 
 function App3() {
@@ -34,7 +33,7 @@ function App3() {
     if (!len) {
       return [];
     }
-    return [...range(0, len)].map(() => randNumber({ min: -1000, max: 1000 }));
+    return [...range(0, len)].map(() => randomInt(-1000, 1000));
   }
   function setData(n: number) {
     chart.current.updateData(n, genData());

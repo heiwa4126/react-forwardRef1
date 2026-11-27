@@ -21,9 +21,6 @@ importers:
 
   .:
     dependencies:
-      '@ngneat/falso':
-        specifier: ^8.0.2
-        version: 8.0.2
       chart.js:
         specifier: ^4.6.2
         version: 4.6.2
@@ -85,9 +82,6 @@ packages:
 
   '@kurkle/color@0.6.6':
     resolution: {integrity: sha512-Bd1NjGyoe27ExXRIBu13YymFP6k/wFxpUkX97Z3RlofLFV43nECB2G8vETZzcZzz2Ct2oRzwYElX65lxyi5UNg==}
-
-  '@ngneat/falso@8.0.2':
-    resolution: {integrity: sha512-vhPtuoHoxE5JGWPSPBqEyTXcjI4MAn8GllR+Vs8FfpAQu2sQRd4PJc3e8kc9vdbdhYHx1C9HmbECgtGLK30z4w==}
 
   '@oxc-project/runtime@0.159.0':
     resolution: {integrity: sha512-z+wJlHpqB2rsnQ5PbQlWKC7lYISlHrniQ3N5JF4LGaa+kOopx5u5DMT2P7pN12fsXFg1gVcoLdRXPRyIS61OKQ==}
@@ -1035,9 +1029,6 @@ packages:
   scheduler@0.28.0:
     resolution: {integrity: sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==}
 
-  seedrandom@3.0.5:
-    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
-
   sirv@3.0.2:
     resolution: {integrity: sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g==}
     engines: {node: '>=18'}
@@ -1081,10 +1072,6 @@ packages:
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
     engines: {node: '>=16.20.0'}
-    hasBin: true
-
-  uuid@14.0.3:
-    resolution: {integrity: sha512-Sc5u1VVln93y1Xnz4R+CunOZc7R9LUcTmhj7Rc7Eg3HVcf7rVn2FOoa812fe0W8p3jD7xeoGSYbfqCGGH2B6xw==}
     hasBin: true
 
   vite-plus@1.8.0:
@@ -1195,11 +1182,6 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.6.0
 
   '@kurkle/color@0.6.6': {}
-
-  '@ngneat/falso@8.0.2':
-    dependencies:
-      seedrandom: 3.0.5
-      uuid: 14.0.3
 
   '@oxc-project/runtime@0.159.0': {}
 
@@ -1789,8 +1771,6 @@ snapshots:
 
   scheduler@0.28.0: {}
 
-  seedrandom@3.0.5: {}
-
   sirv@3.0.2:
     dependencies:
       '@polka/url': 1.0.0-next.29
@@ -1849,8 +1829,6 @@ snapshots:
       '@typescript/typescript-sunos-x64': 7.0.2
       '@typescript/typescript-win32-arm64': 7.0.2
       '@typescript/typescript-win32-x64': 7.0.2
-
-  uuid@14.0.3: {}
 
   vite-plus@1.8.0(@vitest/ui@5.1.1(vitest@5.1.1))(typescript@7.0.2):
     dependencies:

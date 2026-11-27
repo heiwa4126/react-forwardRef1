@@ -16,9 +16,7 @@ export default defineConfig(() => {
             },
           },
           manualChunks(id) {
-            if (
-              /[\\/]node_modules[\\/](chart\.js|react-chartjs-2|@ngneat[\\/]falso)[\\/]/.test(id)
-            ) {
+            if (/[\\/]node_modules[\\/](chart\.js|react-chartjs-2)[\\/]/.test(id)) {
               return "chart-vendor";
             }
           },

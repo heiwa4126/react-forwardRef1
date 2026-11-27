@@ -1,4 +1,3 @@
-import { randNumber } from "@ngneat/falso";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -12,6 +11,7 @@ import {
 } from "chart.js";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { Chart } from "react-chartjs-2";
+import { randomInt } from "../utils";
 
 ChartJS.register(
   CategoryScale,
@@ -44,13 +44,13 @@ export const data = {
   datasets: [
     {
       label: "Dataset 1",
-      data: labels.map(() => randNumber({ min: -1000, max: 1000 })),
+      data: labels.map(() => randomInt(-1000, 1000)),
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
     {
       label: "Dataset 2",
-      data: labels.map(() => randNumber({ min: -1000, max: 1000 })),
+      data: labels.map(() => randomInt(-1000, 1000)),
       borderColor: "rgb(53, 162, 235)",
       backgroundColor: "rgba(53, 162, 235, 0.5)",
     },
